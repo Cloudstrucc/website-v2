@@ -30,6 +30,7 @@
 
 <body class="index-page">
 
+
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
       <a href="index.html" class="logo d-flex align-items-center me-auto">
@@ -491,7 +492,7 @@
     </section>
 
     <!-- Team Section -->
-    <section id="team" class="team section">
+    <!-- <section id="team" class="team section">
       <div class="container section-title" data-aos="fade-up">
         <h2>Our Team</h2>
         <p>Expert cloud professionals dedicated to your success</p>
@@ -560,7 +561,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
@@ -576,7 +577,7 @@
               <i class="bi bi-geo-alt flex-shrink-0"></i>
               <div>
                 <h3>Address</h3>
-                <p>1 Sussex, Ottawa, ON</p>
+                <p>1 Sussex Drive, 7th Floor, Office 805, Ottawa, ON</p>
               </div>
             </div>
 
@@ -598,7 +599,7 @@
           </div>
 
           <div class="col-lg-7">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="500">
+            <form id="contact-form" class="php-email-form" data-aos="fade-up" data-aos-delay="500">
               <div class="row gy-4">
                 <div class="col-md-6">
                   <input type="text" name="name" class="form-control" placeholder="Your Name" required>
@@ -641,19 +642,86 @@
     </div>
   </footer>
 
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
 
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <!-- Contact Form Handler -->
+  <script>
+    (function() {
+      // Initialize EmailJS with your user ID
+      emailjs.init("YOUR_USER_ID");
+
+      const contactForm = document.querySelector('#contact-form');
+      const loadingIndicator = contactForm.querySelector('.loading');
+      const errorMessage = contactForm.querySelector('.error-message');
+      const sentMessage = contactForm.querySelector('.sent-message');
+
+      function showElement(element) {
+        element.style.display = 'block';
+      }
+
+      function hideElement(element) {
+        element.style.display = 'none';
+      }
+
+      function resetMessages() {
+        hideElement(loadingIndicator);
+        hideElement(errorMessage);
+        hideElement(sentMessage);
+      }
+
+      async function handleSubmit(event) {
+        event.preventDefault();
+        resetMessages();
+        showElement(loadingIndicator);
+
+        const name = contactForm.querySelector('input[name="name"]').value;
+        const email = contactForm.querySelector('input[name="email"]').value;
+        const subject = contactForm.querySelector('input[name="subject"]').value;
+        const message = contactForm.querySelector('textarea[name="message"]').value;
+
+        try {
+          await emailjs.send(
+            "YOUR_SERVICE_ID", // Replace with your EmailJS service ID
+            "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
+            {
+              from_name: name,
+              from_email: email,
+              subject: subject,
+              message: message,
+              to_email: 'contact@cloudstrucc.com'
+            }
+          );
+
+          hideElement(loadingIndicator);
+          showElement(sentMessage);
+          contactForm.reset();
+        } catch (error) {
+          console.error('Error:', error);
+          hideElement(loadingIndicator);
+          showElement(errorMessage);
+          errorMessage.innerHTML = 'An error occurred. Please try again later.';
+        }
+      }
+
+      contactForm.addEventListener('submit', handleSubmit);
+    })();
+  </script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
