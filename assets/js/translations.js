@@ -5,7 +5,7 @@ const SimpleTranslations = {
     async init() {
       try {
         console.log('Loading translations...');
-        const response = await fetch('locales/translations.csv');
+        const response = await fetch('/assets/js/locales/translations.csv');
         if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
         }
