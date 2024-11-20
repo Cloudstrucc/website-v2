@@ -42,28 +42,27 @@ const SimpleTranslations = {
     },
   
     parseCsv(csv) {
-      const lines = csv.split('\n');
-      const headers = lines[0].split(',').map(h => h.trim());
-      
-      // Initialize language objects
-      headers.slice(1).forEach(lang => {
-        this.strings[lang] = {};
-      });
-      
-      // Parse each line
-      lines.slice(1).forEach(line => {
-        if (!line.trim()) return;
+        const lines = csv.split('\n');
+        const headers = lines[0].split(',').map(h => h.trim());
         
-        const values = line.split(',').map(v => 
-          v.trim().replace(/^"(.*)"$/, '$1')); // Remove quotes
-        
-        const key = values[0];
-        headers.slice(1).forEach((lang, i) => {
-          this.strings[lang][key] = values[i + 1];
+        // Create fresh objects for each language
+        this.strings = {};
+        headers.slice(1).forEach(lang => {
+          this.strings[lang] = Object.create(null);
         });
-      });
+        
+        lines.slice(1).forEach(line => {
+          if (!line.trim()) return;
+          const values = line.split(',').map(v => v.trim().replace(/^"(.*)"$/, '$1'));
+          const key = values[0];
+          headers.slice(1).forEach((lang, i) => {
+            if (this.strings[lang]) {
+              this.strings[lang][key] = values[i + 1];
+            }
+          });
+        });
     },
-  
+
     switchLanguage(lang) {
       if (this.strings[lang]) {
         console.log('Switching to language:', lang);
