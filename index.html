@@ -26,6 +26,9 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+
+  
+
 </head>
 
 <body class="index-page">
@@ -49,6 +52,11 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
+      <div class="language-switcher ms-3 me-3">
+        <button data-lang="en" class="active">EN</button>
+        <button data-lang="fr">FR</button>
+      </div>
+
       <a class="btn-getstarted" href="#contact">Get Started</a>
     </div>
   </header>
@@ -60,8 +68,8 @@
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-            <h1>Transform, Secure, and Modernize Your Digital Enterprise</h1>
-            <p>We deliver comprehensive IT solutions spanning cloud and on-premises environments, with expertise in security, infrastructure, and identity management. Our extensive toolkit and documentation accelerate implementations while maintaining enterprise-grade quality across all services</p>
+            <h1 data-i18n="hero.title">Transform, Secure, and Modernize Your Digital Enterprise</h1>
+            <p data-i18n="hero.subtitle">We deliver comprehensive IT solutions spanning cloud and on-premises environments, with expertise in security, infrastructure, and identity management. Our extensive toolkit and documentation accelerate implementations while maintaining enterprise-grade quality across all services</p>
             <div class="d-flex">
               <a href="#contact" class="btn-get-started">Schedule Consultation</a>
             </div>
@@ -761,6 +769,7 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/translations.js"></script>
 
 </body>
 </html>
