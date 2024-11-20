@@ -40,7 +40,6 @@ const SimpleTranslations = {
         console.error('Translation initialization failed:', error);
       }
     },
-  
     parseCsv(csv) {
         const lines = csv.split('\n');
         const headers = lines[0].split(',').map(h => h.trim());
