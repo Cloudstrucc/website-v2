@@ -12,19 +12,25 @@
             padding: 8px 0;
             border-bottom: 1px solid #dee2e6;
         }
-        textarea.form-control {
-            min-height: 100px;
-        }
         .category-header {
             background-color: #e9ecef;
             padding: 10px;
-            margin-top: 20px;
             font-weight: bold;
+            margin-top: 20px;
         }
         .save-indicator {
             display: none;
             color: green;
             margin-left: 10px;
+        }
+        textarea.form-control {
+            min-height: 100px;
+        }
+        th {
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
     </style>
 </head>
@@ -57,15 +63,65 @@
                         <td>meta.title</td>
                         <td><input type="text" class="form-control" value="Cloudstrucc inc. - Cloud Solutions & Digital Transformation" data-key="meta.title" data-lang="en"></td>
                         <td><input type="text" class="form-control" value="Cloudstrucc inc. - Solutions Cloud & Transformation Numérique" data-key="meta.title" data-lang="fr"></td>
-                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
                     </tr>
                     <tr>
                         <td>nav.home</td>
                         <td><input type="text" class="form-control" value="Home" data-key="nav.home" data-lang="en"></td>
                         <td><input type="text" class="form-control" value="Accueil" data-key="nav.home" data-lang="fr"></td>
-                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
                     </tr>
-                    <!-- Continue with all navigation items -->
+                    <tr>
+                        <td>nav.about</td>
+                        <td><input type="text" class="form-control" value="About" data-key="nav.about" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="À propos" data-key="nav.about" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>nav.services</td>
+                        <td><input type="text" class="form-control" value="Services" data-key="nav.services" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Services" data-key="nav.services" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>nav.solutions</td>
+                        <td><input type="text" class="form-control" value="Solutions" data-key="nav.solutions" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Solutions" data-key="nav.solutions" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>nav.contact</td>
+                        <td><input type="text" class="form-control" value="Contact" data-key="nav.contact" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Contact" data-key="nav.contact" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>nav.getStarted</td>
+                        <td><input type="text" class="form-control" value="Get Started" data-key="nav.getStarted" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Commencer" data-key="nav.getStarted" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
 
                     <!-- Hero Section -->
                     <tr class="category-header">
@@ -75,103 +131,343 @@
                         <td>hero.title</td>
                         <td><textarea class="form-control" data-key="hero.title" data-lang="en">Transform, Secure, and Modernize Your Digital Enterprise</textarea></td>
                         <td><textarea class="form-control" data-key="hero.title" data-lang="fr">Transformez, Sécurisez et Modernisez Votre Entreprise Numérique</textarea></td>
-                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
                     </tr>
                     <tr>
                         <td>hero.subtitle</td>
                         <td><textarea class="form-control" data-key="hero.subtitle" data-lang="en">We deliver comprehensive IT solutions spanning cloud and on-premises environments, with expertise in security, infrastructure, and identity management. Our extensive toolkit and documentation accelerate implementations while maintaining enterprise-grade quality across all services</textarea></td>
-                        <td><textarea class="form-control" data-key="hero.subtitle" data-lang="fr">Transformez, Sécurisez et Modernisez Votre Entreprise Numérique</textarea></td>
-                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                        <td><textarea class="form-control" data-key="hero.subtitle" data-lang="fr">Nous fournissons des solutions informatiques complètes couvrant les environnements cloud et sur site, avec une expertise en sécurité, infrastructure et gestion des identités. Notre boîte à outils complète et notre documentation accélèrent les implémentations tout en maintenant une qualité de niveau entreprise</textarea></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
                     </tr>
                     <tr>
                         <td>hero.cta</td>
-                        <td><textarea class="form-control" data-key="hero.cta" data-lang="en">Schedule Consultation</textarea></td>
-                        <td><textarea class="form-control" data-key="hero.cta" data-lang="fr">Schedule Consultation</textarea></td>
-                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                        <td><input type="text" class="form-control" value="Schedule Consultation" data-key="hero.cta" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Planifier une Consultation" data-key="hero.cta" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
                     </tr>
 
                     <!-- Clients Section -->
                     <tr class="category-header">
                         <td colspan="4">Clients Section</td>
                     </tr>
-                    <!-- Clients content rows -->
                     <tr>
                         <td>clients.title</td>
-                        <td><textarea class="form-control" data-key="clients.title" data-lang="en">Schedule Consultation</textarea></td>
-                        <td><textarea class="form-control" data-key="clients.title" data-lang="fr">Schedule Consultation</textarea></td>
-                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                        <td><input type="text" class="form-control" value="Recent Clients" data-key="clients.title" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Clients Récents" data-key="clients.title" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
                     </tr>
                     <tr>
                         <td>clients.subtitle</td>
-                        <td><textarea class="form-control" data-key="clients.subtitle" data-lang="en">Schedule Consultation</textarea></td>
-                        <td><textarea class="form-control" data-key="clients.subtitle" data-lang="fr">Schedule Consultation</textarea></td>
-                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                        <td><textarea class="form-control" data-key="clients.subtitle" data-lang="en">Helping our clients achieve digital excellence through Microsoft cloud solutions, Power Platform innovations, and comprehensive security assessments</textarea></td>
+                        <td><textarea class="form-control" data-key="clients.subtitle" data-lang="fr">Nous aidons nos clients à atteindre l'excellence numérique grâce aux solutions cloud Microsoft, aux innovations Power Platform et aux évaluations de sécurité complètes</textarea></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
                     </tr>
-                    
+
                     <!-- About Section -->
                     <tr class="category-header">
                         <td colspan="4">About Section</td>
                     </tr>
-                    <!-- About content rows -->
                     <tr>
                         <td>about.title</td>
-                        <td><textarea class="form-control" data-key="about.title" data-lang="en">Schedule Consultation</textarea></td>
-                        <td><textarea class="form-control" data-key="about.title" data-lang="fr">Schedule Consultation</textarea></td>
-                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                        <td><input type="text" class="form-control" value="About Us" data-key="about.title" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="À Propos de Nous" data-key="about.title" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
                     </tr>
                     <tr>
                         <td>about.subtitle</td>
-                        <td><textarea class="form-control" data-key="about.subtitle" data-lang="en">Schedule Consultation</textarea></td>
-                        <td><textarea class="form-control" data-key="about.subtitle" data-lang="fr">Schedule Consultation</textarea></td>
-                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                        <td><input type="text" class="form-control" value="Your trusted partner in digital transformation and cloud solutions" data-key="about.subtitle" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Votre partenaire de confiance en transformation numérique et solutions cloud" data-key="about.subtitle" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
                     </tr>
                     <tr>
                         <td>about.heading</td>
-                        <td><textarea class="form-control" data-key="about.heading" data-lang="en">Schedule Consultation</textarea></td>
-                        <td><textarea class="form-control" data-key="about.heading" data-lang="fr">Schedule Consultation</textarea></td>
-                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                        <td><input type="text" class="form-control" value="Expert Cloud Solutions for Modern Businesses" data-key="about.heading" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Solutions Cloud Expertes pour Entreprises Modernes" data-key="about.heading" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
                     </tr>
                     <tr>
                         <td>about.description</td>
-                        <td><textarea class="form-control" data-key="about.description" data-lang="en">Schedule Consultation</textarea></td>
-                        <td><textarea class="form-control" data-key="about.description" data-lang="fr">Schedule Consultation</textarea></td>
-                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                        <td><textarea class="form-control" data-key="about.description" data-lang="en">At Cloudstrucc, we specialize in delivering comprehensive cloud solutions that drive business growth and digital innovation. Our expertise spans across Microsoft's cloud ecosystem, ensuring your organization stays ahead in the digital age.</textarea></td>
+                        <td><textarea class="form-control" data-key="about.description" data-lang="fr">Chez Cloudstrucc, nous nous spécialisons dans la fourniture de solutions cloud complètes qui stimulent la croissance et l'innovation numérique. Notre expertise couvre l'écosystème cloud de Microsoft, garantissant que votre organisation reste en avance dans l'ère numérique.</textarea></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
                     </tr>
                     <tr>
                         <td>about.cta</td>
-                        <td><textarea class="form-control" data-key="about.cta" data-lang="en">Schedule Consultation</textarea></td>
-                        <td><textarea class="form-control" data-key="about.cta" data-lang="fr">Schedule Consultation</textarea></td>
-                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                        <td><input type="text" class="form-control" value="Our Services" data-key="about.cta" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Nos Services" data-key="about.cta" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
                     </tr>
-                    <!-- Services Section -->
-                    <tr class="category-header">
-                        <td colspan="4">Services Section</td>
-                    </tr>
-                    <!-- Services content rows -->
-
                     <!-- Stats Section -->
                     <tr class="category-header">
                         <td colspan="4">Stats Section</td>
                     </tr>
-                    <!-- Stats content rows -->
+                    <tr>
+                        <td>stats.clients.title</td>
+                        <td><input type="text" class="form-control" value="Happy Clients" data-key="stats.clients.title" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Clients Satisfaits" data-key="stats.clients.title" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>stats.clients.subtitle</td>
+                        <td><input type="text" class="form-control" value="across various industries" data-key="stats.clients.subtitle" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="dans diverses industries" data-key="stats.clients.subtitle" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>stats.projects.title</td>
+                        <td><input type="text" class="form-control" value="Projects" data-key="stats.projects.title" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Projets" data-key="stats.projects.title" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>stats.projects.subtitle</td>
+                        <td><input type="text" class="form-control" value="successfully delivered" data-key="stats.projects.subtitle" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="livrés avec succès" data-key="stats.projects.subtitle" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>stats.support.title</td>
+                        <td><input type="text" class="form-control" value="Hours Support" data-key="stats.support.title" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Heures de Support" data-key="stats.support.title" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>stats.support.subtitle</td>
+                        <td><input type="text" class="form-control" value="enterprise availability" data-key="stats.support.subtitle" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="disponibilité entreprise" data-key="stats.support.subtitle" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>stats.experts.title</td>
+                        <td><input type="text" class="form-control" value="Cloud Experts" data-key="stats.experts.title" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Experts Cloud" data-key="stats.experts.title" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>stats.experts.subtitle</td>
+                        <td><input type="text" class="form-control" value="certified professionals" data-key="stats.experts.subtitle" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="professionnels certifiés" data-key="stats.experts.subtitle" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
 
+                    <!-- Services Section -->
+                    <tr class="category-header">
+                        <td colspan="4">Services Section</td>
+                    </tr>
+                    <tr>
+                        <td>services.title</td>
+                        <td><input type="text" class="form-control" value="Our Services" data-key="services.title" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Nos Services" data-key="services.title" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>services.subtitle</td>
+                        <td><input type="text" class="form-control" value="Comprehensive cloud solutions tailored to your business needs" data-key="services.subtitle" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Solutions cloud complètes adaptées aux besoins de votre entreprise" data-key="services.subtitle" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+
+                    <!-- Service Boxes -->
+                    <tr>
+                        <td>services.box1.title</td>
+                        <td><input type="text" class="form-control" value="Azure Excellence" data-key="services.box1.title" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Excellence Azure" data-key="services.box1.title" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>services.box1.description</td>
+                        <td><textarea class="form-control" data-key="services.box1.description" data-lang="en">Comprehensive Azure cloud solutions focusing on security, scalability, and cost optimization</textarea></td>
+                        <td><textarea class="form-control" data-key="services.box1.description" data-lang="fr">Solutions cloud Azure complètes axées sur la sécurité, l'évolutivité et l'optimisation des coûts</textarea></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
                     <!-- Testimonials Section -->
                     <tr class="category-header">
                         <td colspan="4">Testimonials Section</td>
                     </tr>
-                    <!-- Testimonials content rows -->
+                    <tr>
+                        <td>testimonials.title</td>
+                        <td><input type="text" class="form-control" value="Client Testimonials" data-key="testimonials.title" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Témoignages Clients" data-key="testimonials.title" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>testimonials.subtitle</td>
+                        <td><input type="text" class="form-control" value="What our clients say about our cloud transformation services" data-key="testimonials.subtitle" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Ce que nos clients disent de nos services de transformation cloud" data-key="testimonials.subtitle" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>testimonials.1.name</td>
+                        <td><input type="text" class="form-control" value="John Smith" data-key="testimonials.1.name" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="John Smith" data-key="testimonials.1.name" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>testimonials.1.position</td>
+                        <td><input type="text" class="form-control" value="CTO, Enterprise Solutions" data-key="testimonials.1.position" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="CTO, Solutions Entreprise" data-key="testimonials.1.position" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>testimonials.1.text</td>
+                        <td><textarea class="form-control" data-key="testimonials.1.text" data-lang="en">Cloudstrucc's Azure expertise transformed our infrastructure, improving security and reducing costs by 40%. Their team's dedication to excellence is outstanding.</textarea></td>
+                        <td><textarea class="form-control" data-key="testimonials.1.text" data-lang="fr">L'expertise Azure de Cloudstrucc a transformé notre infrastructure, améliorant la sécurité et réduisant les coûts de 40%. Leur équipe fait preuve d'un dévouement exceptionnel à l'excellence.</textarea></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
 
                     <!-- Contact Section -->
                     <tr class="category-header">
                         <td colspan="4">Contact Section</td>
                     </tr>
-                    <!-- Contact content rows -->
+                    <tr>
+                        <td>contact.title</td>
+                        <td><input type="text" class="form-control" value="Contact Us" data-key="contact.title" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Contactez-nous" data-key="contact.title" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>contact.subtitle</td>
+                        <td><input type="text" class="form-control" value="Get in touch to discuss your cloud transformation journey" data-key="contact.subtitle" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Contactez-nous pour discuter de votre parcours de transformation cloud" data-key="contact.subtitle" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>contact.name</td>
+                        <td><input type="text" class="form-control" value="Your Name" data-key="contact.name" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Votre Nom" data-key="contact.name" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>contact.email</td>
+                        <td><input type="text" class="form-control" value="Your Email" data-key="contact.email" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Votre Email" data-key="contact.email" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>contact.submit</td>
+                        <td><input type="text" class="form-control" value="Send Message" data-key="contact.submit" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Envoyer le Message" data-key="contact.submit" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
 
                     <!-- Footer Section -->
                     <tr class="category-header">
                         <td colspan="4">Footer Section</td>
                     </tr>
-                    <!-- Footer content rows -->
+                    <tr>
+                        <td>footer.copyright</td>
+                        <td><input type="text" class="form-control" value="© Copyright" data-key="footer.copyright" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="© Droits d'auteur" data-key="footer.copyright" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>footer.rights</td>
+                        <td><input type="text" class="form-control" value="All Rights Reserved" data-key="footer.rights" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Tous droits réservés" data-key="footer.rights" data-lang="fr"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary save-btn">Save</button>
+                            <span class="save-indicator">✓</span>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -180,24 +476,22 @@
     <!-- Load translations.js first -->
     <script src="assets/js/translations.js"></script>
 
+    <!-- Admin page specific scripts -->
     <script>
-        // Initialize translations
+        // Initialize translations from our existing object
         const translations = SimpleTranslations.strings;
-
+        
         function saveRow(button) {
             const row = button.closest('tr');
             const key = row.querySelector('[data-key]').dataset.key;
             const enValue = row.querySelector('[data-lang="en"]').value;
             const frValue = row.querySelector('[data-lang="fr"]').value;
 
-            // Update translations object
             translations.en[key] = enValue;
             translations.fr[key] = frValue;
 
-            // Save to localStorage
             SimpleTranslations.saveTranslations(translations);
 
-            // Show save indicator
             const indicator = row.querySelector('.save-indicator');
             indicator.style.display = 'inline';
             setTimeout(() => {
@@ -206,31 +500,30 @@
         }
 
         function saveAllTranslations() {
-            // Save all rows
             document.querySelectorAll('.save-btn').forEach(button => {
                 saveRow(button);
             });
-
-            // Show success message
             alert('All translations saved successfully!');
         }
 
         function exportToCSV() {
             let csv = 'key,en,fr\n';
-            
             document.querySelectorAll('tr:not(.category-header)').forEach(row => {
                 const inputs = row.querySelectorAll('input, textarea');
                 if (inputs.length > 0) {
                     const key = inputs[0].dataset.key;
-                    const enValue = inputs[0].value.replace(/"/g, '""');
-                    const frValue = inputs[1].value.replace(/"/g, '""');
-                    csv += `"${key}","${enValue}","${frValue}"\n`;
+                    if (key) {
+                        const enValue = (inputs[0].value || '').replace(/"/g, '""');
+                        const frValue = (inputs[1].value || '').replace(/"/g, '""');
+                        csv += `"${key}","${enValue}","${frValue}"\n`;
+                    }
                 }
             });
 
             const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
             const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
+            link.href = url;
             link.download = 'translations.csv';
             link.click();
         }
