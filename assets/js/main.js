@@ -1,62 +1,8 @@
 /**
-* Template Name: Cloudstrucc
-* Template URL: https://bootstrapmade.com/Cloudstrucc-free-bootstrap-template/
-* Updated: Aug 07 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
-(function() {
+ * Main JavaScript file for Cloudstrucc website
+ */
+document.addEventListener('DOMContentLoaded', () => {
   "use strict";
-
-  /**
-   * Apply .scrolled class to the body as the page is scrolled down
-   */
-  function toggleScrolled() {
-    const selectBody = document.querySelector('body');
-    const selectHeader = document.querySelector('#header');
-    if (!selectHeader.classList.contains('scroll-up-sticky') && !selectHeader.classList.contains('sticky-top') && !selectHeader.classList.contains('fixed-top')) return;
-    window.scrollY > 100 ? selectBody.classList.add('scrolled') : selectBody.classList.remove('scrolled');
-  }
-
-  document.addEventListener('scroll', toggleScrolled);
-  window.addEventListener('load', toggleScrolled);
-
-  /**
-   * Mobile nav toggle
-   */
-  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
-
-  function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
-    mobileNavToggleBtn.classList.toggle('bi-list');
-    mobileNavToggleBtn.classList.toggle('bi-x');
-  }
-  mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
-
-  /**
-   * Hide mobile nav on same-page/hash links
-   */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
-    navmenu.addEventListener('click', () => {
-      if (document.querySelector('.mobile-nav-active')) {
-        mobileNavToogle();
-      }
-    });
-
-  });
-
-  /**
-   * Toggle mobile nav dropdowns
-   */
-  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.parentNode.classList.toggle('active');
-      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
-      e.stopImmediatePropagation();
-    });
-  });
 
   /**
    * Preloader
@@ -69,141 +15,182 @@
   }
 
   /**
-   * Scroll top button
+   * Mobile nav toggle
    */
-  let scrollTop = document.querySelector('.scroll-top');
+  const mobileNavToggle = () => {
+    const mobileNavShow = document.querySelector('.mobile-nav-show');
+    const mobileNavHide = document.querySelector('.mobile-nav-hide');
+    const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
 
-  function toggleScrollTop() {
-    if (scrollTop) {
-      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+    if (mobileNavToggleBtn) {
+      mobileNavToggleBtn.addEventListener('click', function(e) {
+        document.querySelector('body').classList.toggle('mobile-nav-active');
+        this.classList.toggle('bi-list');
+        this.classList.toggle('bi-x');
+      });
     }
   }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
 
-  window.addEventListener('load', toggleScrollTop);
-  document.addEventListener('scroll', toggleScrollTop);
+  /**
+   * Hide mobile nav on same-page/hash links
+   */
+  const navbarlinks = document.querySelectorAll('#navmenu a');
+  if (navbarlinks) {
+    navbarlinks.forEach(navbarlink => {
+      navbarlink.addEventListener('click', () => {
+        if (document.querySelector('.mobile-nav-active')) {
+          document.querySelector('body').classList.remove('mobile-nav-active');
+          const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+          if (mobileNavToggleBtn) {
+            mobileNavToggleBtn.classList.toggle('bi-list');
+            mobileNavToggleBtn.classList.toggle('bi-x');
+          }
+        }
+      });
+    });
+  }
+
+  /**
+   * Toggle mobile nav dropdowns
+   */
+  const navDropdowns = document.querySelectorAll('.navbar .dropdown > a');
+  if (navDropdowns) {
+    navDropdowns.forEach(el => {
+      el.addEventListener('click', function(event) {
+        if (document.querySelector('.mobile-nav-active')) {
+          event.preventDefault();
+          this.classList.toggle('active');
+          this.nextElementSibling.classList.toggle('dropdown-active');
+        }
+      });
+    });
+  }
+
+  /**
+   * Scroll top button
+   */
+  const scrollTop = document.querySelector('.scroll-top');
+  if (scrollTop) {
+    const togglescrollTop = function() {
+      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+    }
+    window.addEventListener('load', togglescrollTop);
+    document.addEventListener('scroll', togglescrollTop);
+    scrollTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
 
   /**
    * Animation on scroll function and init
    */
-  function aosInit() {
-    AOS.init({
-      duration: 600,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    });
+  function aos_init() {
+    if (typeof AOS !== 'undefined') {
+      AOS.init({
+        duration: 600,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false
+      });
+    }
   }
-  window.addEventListener('load', aosInit);
-
-  /**
-   * Initiate glightbox
-   */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
+  window.addEventListener('load', () => {
+    aos_init();
   });
 
   /**
    * Initiate Pure Counter
    */
-  new PureCounter();
+  if (typeof PureCounter !== 'undefined') {
+    new PureCounter();
+  }
 
   /**
-   * Init swiper sliders
+   * Initiate glightbox
    */
-  function initSwiper() {
-    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
-      let config = JSON.parse(
-        swiperElement.querySelector(".swiper-config").innerHTML.trim()
-      );
-
-      if (swiperElement.classList.contains("swiper-tab")) {
-        initSwiperWithCustomPagination(swiperElement, config);
-      } else {
-        new Swiper(swiperElement, config);
-      }
+  if (typeof GLightbox !== 'undefined') {
+    const glightbox = GLightbox({
+      selector: '.glightbox'
     });
   }
 
-  window.addEventListener("load", initSwiper);
+  /**
+   * Init swiper slider with custom options
+   */
+  function initSwiper() {
+    document.querySelectorAll('.init-swiper').forEach(function(element) {
+      let config = {
+        loop: true,
+        speed: 600,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false
+        },
+        slidesPerView: 'auto',
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'bullets',
+          clickable: true
+        }
+      };
+
+      // Get custom config from data attribute if exists
+      const configElement = element.querySelector('.swiper-config');
+      if (configElement) {
+        try {
+          const customConfig = JSON.parse(configElement.textContent);
+          config = { ...config, ...customConfig };
+        } catch (error) {
+          console.error('Error parsing swiper config:', error);
+        }
+      }
+
+      if (typeof Swiper !== 'undefined') {
+        new Swiper(element, config);
+      }
+    });
+  }
+  window.addEventListener('load', initSwiper);
 
   /**
    * Init isotope layout and filters
    */
-  document.querySelectorAll('.isotope-layout').forEach(function(isotopeItem) {
-    let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
-    let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
-    let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
+  function initIsotope() {
+    document.querySelectorAll('.isotope-layout').forEach(function(isotopeContainer) {
+      let layout = isotopeContainer.getAttribute('data-layout') || 'masonry';
+      let filter = isotopeContainer.getAttribute('data-default-filter') || '*';
+      let sort = isotopeContainer.getAttribute('data-sort') || 'original-order';
 
-    let initIsotope;
-    imagesLoaded(isotopeItem.querySelector('.isotope-container'), function() {
-      initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
-        itemSelector: '.isotope-item',
-        layoutMode: layout,
-        filter: filter,
-        sortBy: sort
-      });
-    });
-
-    isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
-      filters.addEventListener('click', function() {
-        isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
-        this.classList.add('filter-active');
-        initIsotope.arrange({
-          filter: this.getAttribute('data-filter')
+      if (typeof Isotope !== 'undefined') {
+        let isotope = new Isotope(isotopeContainer.querySelector('.isotope-container'), {
+          itemSelector: '.isotope-item',
+          layoutMode: layout,
+          filter: filter,
+          sortBy: sort
         });
-        if (typeof aosInit === 'function') {
-          aosInit();
-        }
-      }, false);
+
+        isotopeContainer.querySelectorAll('.isotope-filters li').forEach(function(filter) {
+          filter.addEventListener('click', function(e) {
+            e.preventDefault();
+            isotopeContainer.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
+            this.classList.add('filter-active');
+            isotope.arrange({
+              filter: this.getAttribute('data-filter')
+            });
+            if (typeof aos_init === 'function') {
+              aos_init();
+            }
+          }, false);
+        });
+      }
     });
-
-  });
-
-  /**
-   * Correct scrolling position upon page load for URLs containing hash links.
-   */
-  window.addEventListener('load', function(e) {
-    if (window.location.hash) {
-      if (document.querySelector(window.location.hash)) {
-        setTimeout(() => {
-          let section = document.querySelector(window.location.hash);
-          let scrollMarginTop = getComputedStyle(section).scrollMarginTop;
-          window.scrollTo({
-            top: section.offsetTop - parseInt(scrollMarginTop),
-            behavior: 'smooth'
-          });
-        }, 100);
-      }
-    }
-  });
-
-  /**
-   * Navmenu Scrollspy
-   */
-  let navmenulinks = document.querySelectorAll('.navmenu a');
-
-  function navmenuScrollspy() {
-    navmenulinks.forEach(navmenulink => {
-      if (!navmenulink.hash) return;
-      let section = document.querySelector(navmenulink.hash);
-      if (!section) return;
-      let position = window.scrollY + 200;
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
-        navmenulink.classList.add('active');
-      } else {
-        navmenulink.classList.remove('active');
-      }
-    })
   }
-  window.addEventListener('load', navmenuScrollspy);
-  document.addEventListener('scroll', navmenuScrollspy);
+  window.addEventListener('load', initIsotope);
 
-})();
+  // Initialize mobile nav
+  mobileNavToggle();
+});

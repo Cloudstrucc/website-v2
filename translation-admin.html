@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Translation Manager</title>
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .translation-row:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .translation-row {
+            padding: 8px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+        textarea.form-control {
+            min-height: 100px;
+        }
+        .category-header {
+            background-color: #e9ecef;
+            padding: 10px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .save-indicator {
+            display: none;
+            color: green;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Translation Manager</h2>
+            <div>
+                <button class="btn btn-primary me-2" onclick="exportToCSV()">Export to CSV</button>
+                <button class="btn btn-success" onclick="saveAllTranslations()">Save All Changes</button>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width: 20%">Key</th>
+                        <th style="width: 35%">English</th>
+                        <th style="width: 35%">French</th>
+                        <th style="width: 10%">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Meta & Navigation -->
+                    <tr class="category-header">
+                        <td colspan="4">Meta & Navigation</td>
+                    </tr>
+                    <tr>
+                        <td>meta.title</td>
+                        <td><input type="text" class="form-control" value="Cloudstrucc inc. - Cloud Solutions & Digital Transformation" data-key="meta.title" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Cloudstrucc inc. - Solutions Cloud & Transformation Numérique" data-key="meta.title" data-lang="fr"></td>
+                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>nav.home</td>
+                        <td><input type="text" class="form-control" value="Home" data-key="nav.home" data-lang="en"></td>
+                        <td><input type="text" class="form-control" value="Accueil" data-key="nav.home" data-lang="fr"></td>
+                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                    </tr>
+                    <!-- Continue with all navigation items -->
+
+                    <!-- Hero Section -->
+                    <tr class="category-header">
+                        <td colspan="4">Hero Section</td>
+                    </tr>
+                    <tr>
+                        <td>hero.title</td>
+                        <td><textarea class="form-control" data-key="hero.title" data-lang="en">Transform, Secure, and Modernize Your Digital Enterprise</textarea></td>
+                        <td><textarea class="form-control" data-key="hero.title" data-lang="fr">Transformez, Sécurisez et Modernisez Votre Entreprise Numérique</textarea></td>
+                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>hero.subtitle</td>
+                        <td><textarea class="form-control" data-key="hero.subtitle" data-lang="en">We deliver comprehensive IT solutions spanning cloud and on-premises environments, with expertise in security, infrastructure, and identity management. Our extensive toolkit and documentation accelerate implementations while maintaining enterprise-grade quality across all services</textarea></td>
+                        <td><textarea class="form-control" data-key="hero.subtitle" data-lang="fr">Transformez, Sécurisez et Modernisez Votre Entreprise Numérique</textarea></td>
+                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>hero.cta</td>
+                        <td><textarea class="form-control" data-key="hero.cta" data-lang="en">Schedule Consultation</textarea></td>
+                        <td><textarea class="form-control" data-key="hero.cta" data-lang="fr">Schedule Consultation</textarea></td>
+                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                    </tr>
+
+                    <!-- Clients Section -->
+                    <tr class="category-header">
+                        <td colspan="4">Clients Section</td>
+                    </tr>
+                    <!-- Clients content rows -->
+                    <tr>
+                        <td>clients.title</td>
+                        <td><textarea class="form-control" data-key="clients.title" data-lang="en">Schedule Consultation</textarea></td>
+                        <td><textarea class="form-control" data-key="clients.title" data-lang="fr">Schedule Consultation</textarea></td>
+                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>clients.subtitle</td>
+                        <td><textarea class="form-control" data-key="clients.subtitle" data-lang="en">Schedule Consultation</textarea></td>
+                        <td><textarea class="form-control" data-key="clients.subtitle" data-lang="fr">Schedule Consultation</textarea></td>
+                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                    </tr>
+                    
+                    <!-- About Section -->
+                    <tr class="category-header">
+                        <td colspan="4">About Section</td>
+                    </tr>
+                    <!-- About content rows -->
+                    <tr>
+                        <td>about.title</td>
+                        <td><textarea class="form-control" data-key="about.title" data-lang="en">Schedule Consultation</textarea></td>
+                        <td><textarea class="form-control" data-key="about.title" data-lang="fr">Schedule Consultation</textarea></td>
+                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>about.subtitle</td>
+                        <td><textarea class="form-control" data-key="about.subtitle" data-lang="en">Schedule Consultation</textarea></td>
+                        <td><textarea class="form-control" data-key="about.subtitle" data-lang="fr">Schedule Consultation</textarea></td>
+                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>about.heading</td>
+                        <td><textarea class="form-control" data-key="about.heading" data-lang="en">Schedule Consultation</textarea></td>
+                        <td><textarea class="form-control" data-key="about.heading" data-lang="fr">Schedule Consultation</textarea></td>
+                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>about.description</td>
+                        <td><textarea class="form-control" data-key="about.description" data-lang="en">Schedule Consultation</textarea></td>
+                        <td><textarea class="form-control" data-key="about.description" data-lang="fr">Schedule Consultation</textarea></td>
+                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>about.cta</td>
+                        <td><textarea class="form-control" data-key="about.cta" data-lang="en">Schedule Consultation</textarea></td>
+                        <td><textarea class="form-control" data-key="about.cta" data-lang="fr">Schedule Consultation</textarea></td>
+                        <td><button class="btn btn-sm btn-primary save-btn">Save</button><span class="save-indicator">✓</span></td>
+                    </tr>
+                    <!-- Services Section -->
+                    <tr class="category-header">
+                        <td colspan="4">Services Section</td>
+                    </tr>
+                    <!-- Services content rows -->
+
+                    <!-- Stats Section -->
+                    <tr class="category-header">
+                        <td colspan="4">Stats Section</td>
+                    </tr>
+                    <!-- Stats content rows -->
+
+                    <!-- Testimonials Section -->
+                    <tr class="category-header">
+                        <td colspan="4">Testimonials Section</td>
+                    </tr>
+                    <!-- Testimonials content rows -->
+
+                    <!-- Contact Section -->
+                    <tr class="category-header">
+                        <td colspan="4">Contact Section</td>
+                    </tr>
+                    <!-- Contact content rows -->
+
+                    <!-- Footer Section -->
+                    <tr class="category-header">
+                        <td colspan="4">Footer Section</td>
+                    </tr>
+                    <!-- Footer content rows -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Load translations.js first -->
+    <script src="assets/js/translations.js"></script>
+
+    <script>
+        // Initialize translations
+        const translations = SimpleTranslations.strings;
+
+        function saveRow(button) {
+            const row = button.closest('tr');
+            const key = row.querySelector('[data-key]').dataset.key;
+            const enValue = row.querySelector('[data-lang="en"]').value;
+            const frValue = row.querySelector('[data-lang="fr"]').value;
+
+            // Update translations object
+            translations.en[key] = enValue;
+            translations.fr[key] = frValue;
+
+            // Save to localStorage
+            SimpleTranslations.saveTranslations(translations);
+
+            // Show save indicator
+            const indicator = row.querySelector('.save-indicator');
+            indicator.style.display = 'inline';
+            setTimeout(() => {
+                indicator.style.display = 'none';
+            }, 2000);
+        }
+
+        function saveAllTranslations() {
+            // Save all rows
+            document.querySelectorAll('.save-btn').forEach(button => {
+                saveRow(button);
+            });
+
+            // Show success message
+            alert('All translations saved successfully!');
+        }
+
+        function exportToCSV() {
+            let csv = 'key,en,fr\n';
+            
+            document.querySelectorAll('tr:not(.category-header)').forEach(row => {
+                const inputs = row.querySelectorAll('input, textarea');
+                if (inputs.length > 0) {
+                    const key = inputs[0].dataset.key;
+                    const enValue = inputs[0].value.replace(/"/g, '""');
+                    const frValue = inputs[1].value.replace(/"/g, '""');
+                    csv += `"${key}","${enValue}","${frValue}"\n`;
+                }
+            });
+
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'translations.csv';
+            link.click();
+        }
+
+        // Add event listeners to all save buttons
+        document.querySelectorAll('.save-btn').forEach(button => {
+            button.addEventListener('click', () => saveRow(button));
+        });
+    </script>
+</body>
+</html>
