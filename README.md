@@ -285,7 +285,141 @@ sudo chown -R your-username:www-data /var/www/html/your-website
 sudo find /var/www/html/your-website -type d -exec chmod 755 {} \;
 sudo find /var/www/html/your-website -type f -exec chmod 644 {} \;
 ```
+## Automated Deployments with GitHub Actions
 
+This project uses GitHub Actions for automated deployments to your Ubuntu server. Here's how to set it up:
+
+### Prerequisites
+- A GitHub repository with your static website code
+- An Ubuntu server with Nginx configured
+- SSH access to your server
+- GitHub repository secrets access
+
+### Setup GitHub Actions
+
+1. Create SSH Key for Deployment:
+```bash
+# On your local machine
+ssh-keygen -t ed25519 -C "github-actions-deploy"
+```
+
+2. Add the public key to your server:
+```bash
+# Copy the content of your .pub file to your server
+cat ~/.ssh/id_ed25519.pub
+
+# On your server, add to authorized_keys
+echo "your-public-key" >> ~/.ssh/authorized_keys
+```
+
+3. Add repository secrets in GitHub:
+   - Go to your repository → Settings → Secrets and variables → Actions
+   - Add the following secrets:
+   ```
+   DEPLOY_HOST: Your server IP or domain
+   DEPLOY_USER: Your server username (e.g., fredp613)
+   DEPLOY_KEY: Your private SSH key (entire content of id_ed25519)
+   DEPLOY_PATH: /var/www/html/your-website
+   ```
+
+4. Create the workflow file:
+```bash
+mkdir -p .github/workflows
+touch .github/workflows/deploy.yml
+```
+
+5. Add this workflow configuration:
+```yaml
+name: Deploy Website
+
+on:
+  push:
+    branches: [ main ]  # or your default branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Deploy to Server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          source: "."
+          target: ${{ secrets.DEPLOY_PATH }}
+          
+      - name: Execute remote commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          script: |
+            chmod 755 /home/${{ secrets.DEPLOY_USER }}/deploy.sh
+            cd ${{ secrets.DEPLOY_PATH }}
+            sudo chown -R ${{ secrets.DEPLOY_USER }}:www-data .
+            sudo find . -type d -exec chmod 755 {} \;
+            sudo find . -type f -exec chmod 644 {} \;
+```
+
+### How it Works
+
+1. When you push to main branch, GitHub Actions:
+   - Copies your website files to the server
+   - Sets proper permissions
+   - Ensures Nginx can serve the files
+
+2. The workflow:
+   - Uses `scp-action` to securely copy files
+   - Uses `ssh-action` to execute remote commands
+   - Maintains proper file permissions
+   - Keeps website running during deployment
+
+### Testing the Deployment
+
+1. Make a change to your website
+2. Push to main branch:
+```bash
+git add .
+git commit -m "Update website content"
+git push origin main
+```
+
+3. Monitor the deployment:
+   - Go to your repository's Actions tab
+   - Watch the workflow execution
+   - Check for any errors
+
+### Troubleshooting Deployments
+
+1. Permission Issues:
+```bash
+# On server, verify permissions
+ls -la /var/www/html/your-website
+sudo chown -R $USER:www-data /var/www/html/your-website
+```
+
+2. Workflow Failures:
+   - Check GitHub Actions logs
+   - Verify secrets are correctly set
+   - Ensure SSH key has proper permissions
+
+3. Server Issues:
+```bash
+# Check Nginx logs
+sudo tail -f /var/log/nginx/error.log
+sudo nginx -t
+```
+### Security Notes
+
+- Use specific SSH keys for deployments
+- Restrict SSH key permissions on server
+- Regularly rotate deployment credentials
+- Monitor GitHub Actions usage
+  
 ## Troubleshooting
 
 ### Common Issues and Solutions
