@@ -58,7 +58,19 @@ const SimpleTranslations = {
       "services.security.title": "Security Services",
       "services.security.description": "Security Assessments for Azure, M365, and Power Platform implementions (IAAS/PAAS/SAAS). Including Application layer assessments",
 
-      // Testimonials Section
+      // Solutions Section
+      "solutions.title": "Our Solutions",
+      "solutions.subtitle": "Purpose-built products and accelerators to fast-track your digital transformation",
+      "solutions.tile1.title": "Solution 1",
+      "solutions.tile1.description": "Placeholder description for Solution 1. Details coming soon.",
+      "solutions.tile2.title": "Solution 2",
+      "solutions.tile2.description": "Placeholder description for Solution 2. Details coming soon.",
+      "solutions.tile3.title": "Solution 3",
+      "solutions.tile3.description": "Placeholder description for Solution 3. Details coming soon.",
+      "solutions.tile4.title": "Solution 4",
+      "solutions.tile4.description": "Placeholder description for Solution 4. Details coming soon.",
+      "solutions.tile5.title": "Solution 5",
+      "solutions.tile5.description": "Placeholder description for Solution 5. Details coming soon.",
       "testimonials.title": "Client Testimonials",
       "testimonials.subtitle": "What our clients say about our cloud transformation services",
       "testimonials.1.name": "John Smith",
@@ -151,7 +163,19 @@ const SimpleTranslations = {
       "services.security.title": "Services de Sécurité",
       "services.security.description": "Évaluations de sécurité pour les implémentations Azure, M365 et Power Platform (IAAS/PAAS/SAAS). Y compris les évaluations de la couche application",
 
-      // Testimonials Section
+      // Solutions Section
+      "solutions.title": "Nos Solutions",
+      "solutions.subtitle": "Produits et accélérateurs conçus pour accélérer votre transformation numérique",
+      "solutions.tile1.title": "Solution 1",
+      "solutions.tile1.description": "Description provisoire pour la Solution 1. Détails à venir.",
+      "solutions.tile2.title": "Solution 2",
+      "solutions.tile2.description": "Description provisoire pour la Solution 2. Détails à venir.",
+      "solutions.tile3.title": "Solution 3",
+      "solutions.tile3.description": "Description provisoire pour la Solution 3. Détails à venir.",
+      "solutions.tile4.title": "Solution 4",
+      "solutions.tile4.description": "Description provisoire pour la Solution 4. Détails à venir.",
+      "solutions.tile5.title": "Solution 5",
+      "solutions.tile5.description": "Description provisoire pour la Solution 5. Détails à venir.",
       "testimonials.title": "Témoignages Clients",
       "testimonials.subtitle": "Ce que nos clients disent de nos services de transformation cloud",
       "testimonials.1.name": "John Smith",
