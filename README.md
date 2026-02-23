@@ -215,6 +215,81 @@ sudo fail2ban-client status
 
 ---
 
+## 🔄 Updating the Site
+
+After pushing changes to the `main` branch on GitHub, deploy updates to the live server using one of the options below.
+
+Since this is a static site, nginx serves files directly from the git working directory — no build step needed. Changes are live as soon as the pull completes and nginx reloads.
+
+---
+
+### Option A: Manual Deploy
+
+Use this when you're connected directly to the droplet — either via SSH from your terminal or through the **DigitalOcean Droplet Console** (Droplets → your droplet → Access → Launch Droplet Console).
+
+```bash
+# If connecting via SSH from your machine:
+ssh fredp613@cloudstrucc.com
+
+# If using the DigitalOcean web console, you're already on the server.
+
+# Navigate to the web root
+cd /var/www/cloudstrucc
+
+# Trust the directory (only needed once, persists globally)
+sudo git config --global --add safe.directory /var/www/cloudstrucc
+
+# Pull latest and force-sync to match the remote
+sudo git fetch origin main
+sudo git reset --hard origin/main
+
+# Fix permissions and reload nginx
+sudo chown -R www-data:www-data /var/www/cloudstrucc
+sudo chmod -R 755 /var/www/cloudstrucc
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+> **Note:** Use `git reset --hard` instead of `git pull` to avoid merge conflicts. The server copy should always be an exact mirror of the repo — never edit files directly on the droplet.
+
+---
+
+### Option B: Deploy Script (from your local machine)
+
+The included `deploy.sh` script automates the above by SSHing into the droplet from your local terminal.
+
+#### Quick Deploy
+
+```bash
+# Make the script executable (first time only)
+chmod +x deploy.sh
+
+# Deploy with defaults (fredp613@cloudstrucc.com)
+./deploy.sh
+```
+
+#### Deploy with Options
+
+```bash
+# Specify a different SSH key
+./deploy.sh -k ~/.ssh/my_droplet_key
+
+# Override user, host, or branch
+./deploy.sh -u myuser -h 209.x.x.x -b main
+
+# Use environment variables instead of flags
+DEPLOY_USER=fredp613 DEPLOY_HOST=209.x.x.x ./deploy.sh
+```
+
+#### What the Script Does
+
+1. SSHs into the droplet as the deployment user
+2. Adds the safe directory config for git
+3. Runs `git fetch` + `git reset --hard` in `/var/www/cloudstrucc` to force-sync the latest code
+4. Resets file ownership to `www-data` so nginx can serve them
+5. Reloads nginx to pick up any changes
+
+---
+
 ## 📌 Notes
 
 * Primary user: `fredp613`
