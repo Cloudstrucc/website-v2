@@ -223,7 +223,7 @@ Since this is a static site, nginx serves files directly from the git working di
 
 ---
 
-### Option A: Manual Deploy
+### Option A: Manual Deploy (SSH or Digital Ocean Console)
 
 Use this when you're connected directly to the droplet — either via SSH from your terminal or through the **DigitalOcean Droplet Console** (Droplets → your droplet → Access → Launch Droplet Console).
 
