@@ -25,6 +25,44 @@
 
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet">
+
+    <!-- Coming Soon Overlay Styles -->
+    <style>
+        .solution-coming-soon {
+            position: relative;
+        }
+        .solution-coming-soon .service-item {
+            opacity: 0.35;
+            pointer-events: none;
+            filter: grayscale(60%);
+            transition: opacity 0.3s ease, filter 0.3s ease;
+        }
+        .solution-coming-soon::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+        .solution-coming-soon .coming-soon-badge {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-12deg);
+            z-index: 10;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            padding: 10px 28px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            white-space: nowrap;
+            pointer-events: none;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+        }
+    </style>
 </head>
 
 <body class="index-page">
@@ -262,10 +300,12 @@
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+                <!-- AI Diagram Generator - Coming Soon -->
+                <div class="col-xl-3 col-md-6 d-flex solution-coming-soon" data-aos="fade-up" data-aos-delay="200">
+                    <span class="coming-soon-badge" data-i18n="solutions.comingSoon">Coming Soon</span>
                     <div class="service-item position-relative">
                         <i class="bi bi-diagram-3"></i>
-                        <h4><a href="https://diagrams.cloudstrucc.com" target="_blank" data-i18n="solutions.tile2.title">AI Diagram Generator</a></h4>
+                        <h4><a href="#" data-i18n="solutions.tile2.title">AI Diagram Generator</a></h4>
                         <p data-i18n="solutions.tile2.description">Generate professional architecture diagrams from natural language prompts. Supports 40+ templates, 18+ icon styles (Azure, AWS, GCP, K8s), and outputs PNG or editable Draw.io XML.</p>
                         <a href="https://github.com/Cloudstrucc/programmatic-diagram-generator" target="_blank" class="solution-github-link"><i class="bi bi-github"></i> <span data-i18n="solutions.viewGithub">View on GitHub</span></a>
                     </div>
@@ -286,6 +326,16 @@
                         <h4><a href="https://dataverse-api-explorer-cs.azurewebsites.net/" target="_blank" data-i18n="solutions.tile4.title">Dataverse WebAPI Swagger Generator</a></h4>
                         <p data-i18n="solutions.tile4.description">Explore and document Dataverse APIs with interactive Swagger UI. Features publisher filtering, dual auth modes, schema-based filtering, and customizable agency branding.</p>
                         <a href="https://github.com/Cloudstrucc/dataverse-webapi-odata-browser" target="_blank" class="solution-github-link"><i class="bi bi-github"></i> <span data-i18n="solutions.viewGithub">View on GitHub</span></a>
+                    </div>
+                </div>
+
+                <!-- SA&A Tool - New Tile -->
+                <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-item position-relative">
+                        <i class="bi bi-shield-lock"></i>
+                        <h4><a href="https://gc-sa-tool-5862186c.azurewebsites.net/" target="_blank" data-i18n="solutions.tile5.title">ITSG-33 Security Assessment Tool</a></h4>
+                        <p data-i18n="solutions.tile5.description">End-to-end SA&A workflow for GC cloud projects. ITSG-33 control catalog with smart recommendations, evidence collection portal, audit tracking, scoring engine, and ATO/iATO document generation.</p>
+                        <a href="https://github.com/Cloudstrucc/gc-sa-tool" target="_blank" class="solution-github-link"><i class="bi bi-github"></i> <span data-i18n="solutions.viewGithub">View on GitHub</span></a>
                     </div>
                 </div>
             </div>
